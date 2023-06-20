@@ -18,9 +18,18 @@ const createTodo = (todo) => {
 const toggleTodoComplete = (todoPos) => {
   todoList.value[todoPos].isCompleted = !todoList.value[todoPos].isCompleted
 };
+
 const toggleEditTodo = (todoPos) => {
   todoList.value[todoPos].isEditing = !todoList.value[todoPos].isEditing
 };
+
+const updateTodo = (todoPos, todoVal) => {
+  todoList.value[todoPos].todo = todoVal; 
+};
+  
+const deleteTodo = (todoId) => {
+  todoList.value = todoList.value.filter((todo) => todo.id !== todoId)
+} 
 
 </script>
 
@@ -34,6 +43,8 @@ const toggleEditTodo = (todoPos) => {
       :index="index" 
       @toggle-complete="toggleTodoComplete"
       @edit-todo = "toggleEditTodo"
+      @update-todo = "updateTodo"
+      @delete-todo = "deleteTodo"
       /> 
     </ul>
     <p class="todos-msg" v-else  >
