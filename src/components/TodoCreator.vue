@@ -11,7 +11,7 @@ const todoState  = reactive({
 
 });
 
-const createTodo =() => {
+const createTodo = () => {
   todoState.invalid = null;
   if(todoState.todo !==""){
     emit("create-todo",todoState.todo);
